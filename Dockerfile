@@ -9,6 +9,7 @@ RUN apt-get update -yqq && apt-get install -y \
   libxml2-dev \
   libpng-dev \
   libbz2-dev -yqq
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 RUN docker-php-ext-install mbstring pdo_mysql curl json intl gd xml zip bz2 opcache
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
