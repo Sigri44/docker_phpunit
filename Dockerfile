@@ -1,5 +1,9 @@
 FROM php:7.3.12-alpine
 
+MAINTAINER Sigri44 <contact@sigri44.com>
+
+ENV PHP_MEMORY_LIMIT 512M
+
 RUN apk upgrade --update && apk add \
      autoconf file g++ gcc binutils isl libatomic libc-dev musl-dev make re2c libstdc++ libgcc mpc1 mpfr3 gmp libgomp icu-dev \
      git \
@@ -12,7 +16,9 @@ RUN apk upgrade --update && apk add \
      openssl-dev \
   && docker-php-ext-install mbstring pdo_mysql json intl gd xml zip bz2 opcache \
   && docker-php-ext-configure imap --with-imap --with-imap-ssl \
-  && docker-php-ext-install imap
+  && docker-php-ext-install imap \
+  # Set environments
+  sed -i "s|;*memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|i" /etc/php7/php.ini
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug \
