@@ -24,4 +24,4 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
     && sed -i "s|;*memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|i" /usr/local/etc/php/php.ini
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
