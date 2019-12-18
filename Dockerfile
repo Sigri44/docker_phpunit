@@ -9,9 +9,12 @@ RUN apt-get update -yqq && apt-get install -yqq \
   libxml2-dev \
   libpng-dev \
   libbz2-dev \
-  imap-dev \
-  openssl-dev \
-  && docker-php-ext-configure imap --with-kerberos --with-imap-ssl && docker-php-ext-install imap \
+#  imap-dev \
+#  openssl-dev \
+  libc-client-dev \
+  libkrb5-dev \
+  && rm -r /var/lib/apt/lists/* \
+  && docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos && docker-php-ext-install imap \
   && docker-php-ext-install mbstring pdo_mysql curl json intl gd xml zip bz2 opcache
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
