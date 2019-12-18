@@ -2,7 +2,7 @@ FROM php:7.3.12
 
 MAINTAINER Sigri44 <contact@sigri44.com>
 
-ENV PHP_MEMORY_LIMIT 512M
+ENV PHP_MEMORY_LIMIT -1
 
 RUN apt-get update -yqq && apt-get install -yqq \
   git \
@@ -19,7 +19,7 @@ RUN apt-get update -yqq && apt-get install -yqq \
   && docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos && docker-php-ext-install imap \
   && docker-php-ext-install mbstring pdo_mysql curl json intl gd xml zip bz2 opcache
   # Set environments
-  && sed -i "s|;*daemonize\s*=\s*yes|daemonize = no|g" /etc/php7/php-fpm.conf
+  && sed -i "s|;*daemonize\s*=\s*yes|daemonize = no|g" /usr/local/etc/php/php-fpm.conf
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer
