@@ -16,7 +16,7 @@ RUN apk upgrade --update && apk add \
     openssl-dev \
     && docker-php-ext-install mbstring pdo_mysql json intl gd xml zip bz2 opcache \
     && docker-php-ext-configure imap --with-imap --with-imap-ssl \
-    && docker-php-ext-install imap \
+    && docker-php-ext-install imap
 
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
     # Set environments
