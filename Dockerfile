@@ -18,7 +18,7 @@ RUN apk upgrade --update && apk add \
   && docker-php-ext-configure imap --with-imap --with-imap-ssl \
   && docker-php-ext-install imap \
   # Set environments
-  sed -i "s|;*memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|i" /etc/php7/php.ini
+  && sed -i "s|;*memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|i" /etc/php7/php.ini
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug \
