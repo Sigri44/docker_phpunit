@@ -8,9 +8,9 @@ RUN apt-get update -yqq && apt-get install -y \
   libmcrypt-dev \
   libxml2-dev \
   libpng-dev \
-  libbz2-dev -yqq
-  && docker-php-ext-configure imap --with-kerberos --with-imap-ssl && docker-php-ext-install imap
+  libbz2-dev -yqq \
+  && docker-php-ext-configure imap --with-kerberos --with-imap-ssl && docker-php-ext-install imap \
   && docker-php-ext-install mbstring pdo_mysql curl json intl gd xml zip bz2 opcache
-RUN pecl install xdebug
+RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer
