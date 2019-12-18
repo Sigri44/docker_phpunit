@@ -2,7 +2,7 @@ FROM php:7.3.12-alpine
 
 MAINTAINER Sigri44 <contact@sigri44.com>
 
-ENV PHP_MEMORY_LIMIT 512M
+ENV PHP_MEMORY_LIMIT -1
 
 RUN apk upgrade --update && apk add \
      autoconf file g++ gcc binutils isl libatomic libc-dev musl-dev make re2c libstdc++ libgcc mpc1 mpfr3 gmp libgomp icu-dev \
