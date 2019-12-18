@@ -19,7 +19,7 @@ RUN apt-get update -yqq && apt-get install -yqq \
   && docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos && docker-php-ext-install imap \
   && docker-php-ext-install mbstring pdo_mysql curl json intl gd xml zip bz2 opcache \
   # Set environments
-  && sed -i "s|;*daemonize\s*=\s*yes|daemonize = no|g" /usr/local/etc/php/php-fpm.conf
+  && sed -i "s|;*memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|i" /usr/local/etc/php/php.ini
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer
