@@ -26,4 +26,4 @@ RUN pecl install xdebug \
     && docker-php-ext-enable xdebug \
     && rm -rf /var/cache/apk/*
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
