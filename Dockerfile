@@ -17,7 +17,7 @@ RUN apt-get update -yqq && apt-get install -yqq \
   libkrb5-dev \
   && rm -r /var/lib/apt/lists/* \
   && docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos && docker-php-ext-install imap \
-  && docker-php-ext-install mbstring pdo_mysql curl json intl gd xml zip bz2 opcache
+  && docker-php-ext-install mbstring pdo_mysql curl json intl gd xml zip bz2 opcache \
   # Set environments
   && sed -i "s|;*daemonize\s*=\s*yes|daemonize = no|g" /usr/local/etc/php/php-fpm.conf
 RUN pecl install xdebug \
