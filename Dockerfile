@@ -14,6 +14,7 @@ RUN apk upgrade --update && apk add \
     bzip2-dev \
     imap-dev \
     openssl-dev \
+    openssh-client \
     && docker-php-ext-install mbstring pdo_mysql json intl gd xml zip bz2 opcache \
     && docker-php-ext-configure imap --with-imap --with-imap-ssl \
     && docker-php-ext-install imap
